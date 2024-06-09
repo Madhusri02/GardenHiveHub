@@ -48,7 +48,14 @@ run.post('/upload', upload.single('image'), (req, res) => {
         .catch(err => console.log(err));
 });
 
+const contestEndTime = new Date(Date.now() + 2 * 24 * 60 * 60 * 1000);
 
+// Endpoint to get time remaining
+run.get('/contest-time', (req, res) => {
+    const currentTime = new Date();
+    const timeRemaining = Math.max(0, contestEndTime - currentTime);
+    res.json({ timeRemaining });
+});
 
 
 run.get('/get-post' , async function(request , response){
