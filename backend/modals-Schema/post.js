@@ -11,11 +11,11 @@ const post = new mong.Schema({
     },
     description : {
         type : String,
-        required : true
-    },
-    image : {
-        type : String,
         // required : true
+    },
+    image: {
+        data: Buffer,
+        type: String
     },
     like : {
         type : Number,

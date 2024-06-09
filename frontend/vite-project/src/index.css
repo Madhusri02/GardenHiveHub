@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+.lgnbtn{
+  background-color: rgb(0, 200, 255);
+  margin-top: 30px;
+  margin-bottom: 10px;
+  width: 150px;
+  height : 40px;
+  border-radius: 20px ;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color : white; 
+}
+
+.image1{
+  height: 150px;
+  width: 150px;
+}
+.button{
+ background-color: aqua;
+ height:40px;
+ width: 100px;
+ border-radius: 20px;;
+}
+.schbtn{
+  background-color: rgb(252, 53, 53);
+  border-radius: 10px;
+  height: 40px;
+  width:150px;
+}
