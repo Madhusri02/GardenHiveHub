@@ -1,4 +1,4 @@
-name: CI/CD for Streamlit App with Frontend
+name: CI/CD for MERN Application
 
 on:
   push:
@@ -14,8 +14,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-       # FRONTEND SETUP
-    - name: Set up Node.js
+    # FRONTEND SETUP
+    - name: Set up Node.js for Frontend
       uses: actions/setup-node@v3
       with:
         node-version: '16'
@@ -30,5 +30,20 @@ jobs:
       run: |
         npm run build
 
-    # STREAMLIT TEST (optional)
-  
+    # BACKEND SETUP (Node.js)
+    - name: Set up Node.js for Backend
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Install backend dependencies
+      working-directory: backend
+      run: |
+        npm install
+
+    - name: Run backend tests (optional)
+      working-directory: backend
+      run: |
+        npm test
+
+
