@@ -15,19 +15,26 @@ jobs:
       uses: actions/checkout@v3
 
     # FRONTEND SETUP
+    - name: Check if frontend/vite-project directory exists
+      run: |
+        if [ ! -d "frontend/vite-project" ]; then
+          echo "frontend/vite-project directory not found!";
+          exit 1;
+        fi
+
     - name: Set up Node.js for Frontend
       uses: actions/setup-node@v3
       with:
         node-version: '16'
 
     - name: Install frontend dependencies
-      working-directory: frontend
       run: |
+        cd frontend/vite-project
         npm install
 
     - name: Build frontend
-      working-directory: frontend
       run: |
+        cd frontend/vite-project
         npm run build
 
     # BACKEND SETUP (Node.js)
@@ -37,13 +44,16 @@ jobs:
         node-version: '16'
 
     - name: Install backend dependencies
-      working-directory: backend
       run: |
+        cd backend
         npm install
 
     - name: Run backend tests (optional)
-      working-directory: backend
       run: |
+        cd backend
         npm test
 
-
+    # Optional: Notify Success
+    - name: Notify Success
+      uses: some-notification-action
+      if: success()
